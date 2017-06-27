@@ -1,1 +1,1 @@
-apidoc -i docs/ -o local/apidoc/
+apidoc -i docs/ -o apidoc/
