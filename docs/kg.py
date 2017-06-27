@@ -67,6 +67,7 @@
       HTTP/1.1 200 OK
       {
      	"@type": "ItemList",
+ 		"numberOfItems": 1,
      	"itemListElement": [{
      		"@type": "EntitySearchResult",
      		"result": {
@@ -110,6 +111,7 @@
       HTTP/1.1 200 OK
       {
      	"@type": "ItemList",
+ 		"numberOfItems": 1,
      	"itemListElement": [{
      		"@type": "EntitySearchResult",
      		"result": {
@@ -196,6 +198,7 @@
       HTTP/1.1 200 OK
       {
      	"@type": "ItemList",
+ 		"numberOfItems": 1,
      	"itemListElement": [{
      		"@type": "EntitySearchResult",
      		"result": {
@@ -238,28 +241,7 @@
 @apiSuccess {String} itemListElement.result An Entity.
 @apiSuccess {Float} itemListElement.resultScore Matching result score.
 
- @apiSuccessExample Success-Response:
-      HTTP/1.1 200 OK
-      {
-     	"@type": "ItemList",
-     	"itemListElement": [{
-     		"@type": "EntitySearchResult",
-     		"result": {
-     			"@id": "kg:12da321",
-     			"@type": [
-     				"Thing",
-     				"Organization",
-     				"MusicGroup"
-     			],
-     			"name": "刘德华",
-     			"alternateName": ["华仔"],
-     			"dateModified": "2017-01-17T14:40:00+8:00",
-     			"entityScore": 192802,
-     			"description": "香港实力派演员、歌手。"
-     		}
-     	}]
-     }
-"""
+
 
 
 
@@ -334,6 +316,7 @@
       HTTP/1.1 200 OK
       {
      	"@type": "ItemList",
+ 		"numberOfItems": 1,
      	"itemListElement": [{
      		"@type": "EntitySearchResult",
      		"result": {
@@ -398,6 +381,7 @@
       HTTP/1.1 200 OK
       {
      	"@type": "ItemList",
+ 		"numberOfItems": 1,
      	"itemListElement": [{
      		"@type": "EntitySearchResult",
      		"result": {
