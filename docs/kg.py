@@ -149,7 +149,7 @@
 @apiDescription 基于Elastic Search 查询的图查询API。目前只支持one step。 会改写ES搜索结果。
 @apiVersion 0.2.0
 
-@apiParam {String} query  <code>必须</code>  graph query expressed in Elastic Search Query.
+@apiParam {Object} query  <code>必须</code>  graph query expressed in Elastic Search Query Language.
 
 @apiParamExample {json} Elastic Search Query
   {
