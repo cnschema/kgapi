@@ -47,16 +47,13 @@
 
 
 """
-@api {get} /entities:lookup Lookup Entities
+@api {post} /entities:lookup Lookup Entities
 @apiName LookupEntities
 @apiGroup EntityCoreAPI
-@apiDescription  redis lookup service。按名字，或者ids 获取一组实体详细。
+@apiDescription  redis lookup service。按名字 获取一组实体详细。
 @apiVersion 0.1.0
 
-@apiParam {String[]} names <code>必须之一</code> list of Entity name, match whole word.
-@apiParam {String[]} ids <code>必须之一</code> list of Entity ids.
-@apiParam {String[]} types Entity type, List of String, use cnschema name . any entity whose type overlapping with types counts at a match.
-@apiParam {Integer} limit number results to be returned.
+@apiParam {String[]} names <code>必须</code> list of Entity name, match whole word.
 
 @apiSuccess {String} type Defaut 'ItemList'.
 @apiSuccess {Object[]} itemListElement  List of EntitySearchResult (Array of Objects).
@@ -78,14 +75,14 @@
      				"MusicGroup"
      			],
      			"name": "刘德华",
-     			"alternateName": ["华仔"],
-     			"dateModified": "2017-01-17T14:40:00+8:00",
-     			"entityScore": 192802,
-     			"description": "香港实力派演员、歌手。"
+     			"entityScore": 192802
      		}
      	}]
      }
 """
+
+
+
 
 
 
@@ -242,6 +239,7 @@
 @apiSuccess {Float} itemListElement.resultScore Matching result score.
 
 
+"""
 
 
 
