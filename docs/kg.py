@@ -144,9 +144,9 @@
 
 """
 @api {post} /entities:index:es ElasticSearch Query
-@apiName GraphEs
+@apiName IndexEs
 @apiGroup EntityIndexAPI
-@apiDescription 基于Elastic Search 查询的图查询API。目前只支持one step。 需要进一步明确ES的数据模型。
+@apiDescription 基于Elastic Search 查询的图查询API。目前只支持one step。 会改写ES搜索结果。
 @apiVersion 0.2.0
 
 @apiParam {String} query  <code>必须</code>  graph query expressed in Elastic Search Query.
@@ -230,7 +230,7 @@
 
 """
 @api {post} /entities:index:cypher Cypher Graph Query
-@apiName GraphCypher
+@apiName IndexCypher
 @apiGroup EntityIndexAPI
 @apiDescription 基于cypher查询的图查询API。
 @apiVersion 0.3.0
