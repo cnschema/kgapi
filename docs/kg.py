@@ -4,7 +4,7 @@
 @api {get} entities/:id Get Entity
 @apiName GetEntity
 @apiGroup EntityCoreAPI
-@apiDescription 按ID获取实体。注意，实体的@type为 实体所有@type基于cnschema分类继承关系的传递闭包，例如 [MusicGroup] => [MusicGroup, Organization, Thing]
+@apiDescription 按ID获取实体。注意，理想情况下实体的@type为 实体所有@type基于cnschema分类继承关系的传递闭包，例如 [MusicGroup] => [MusicGroup, Organization, Thing]。 又是 type 也可以是一个字符串。
 @apiVersion 0.1.0
 
 @apiParam {String} id <code>必须</code> Entity's unique ID.
@@ -26,11 +26,9 @@
        "error": "Request Unautorized"
      }
 
- @apiSuccessExample Success-Response:
+ @apiSuccessExample {json} Success-Response:
       HTTP/1.1 200 OK
       {
-        "@type": "EntitySearchResult",
-        "result":  {
             "@id": "kg:19a1321",
             "@type": [
                 "Thing",
@@ -41,7 +39,6 @@
             "dateModified": "2017-01-17T14:40:00+8:00",
             "entityScore": 192802,
             "description": "香港实力派演员、歌手。"
-        }
       }
 """
 
