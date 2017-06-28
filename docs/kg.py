@@ -1,7 +1,7 @@
 
 
 """
-@api {get} /entities/:id Get Entity
+@api {get} entities/:id Get Entity
 @apiName GetEntity
 @apiGroup EntityCoreAPI
 @apiDescription 按ID获取实体。注意，实体的@type为 实体所有@type基于cnschema分类继承关系的传递闭包，例如 [MusicGroup] => [MusicGroup, Organization, Thing]
@@ -47,10 +47,10 @@
 
 
 """
-@api {post} /entities:lookup Lookup Entities
+@api {post} entities/ Lookup Entities
 @apiName LookupEntities
 @apiGroup EntityCoreAPI
-@apiDescription  redis lookup service。按名字 获取一组实体详细。
+@apiDescription  redis lookup service。按名字 获取一组实体简略信息（@id, @type, name, entityScore)。
 @apiVersion 0.1.0
 
 @apiParam {String[]} names <code>必须</code> list of Entity name, match whole word.
@@ -58,27 +58,42 @@
 @apiSuccess {String} type Defaut 'ItemList'.
 @apiSuccess {Object[]} itemListElement  List of EntitySearchResult (Array of Objects).
 @apiSuccess {String} itemListElement.type Defaut 'EntitySearchResult'.
-@apiSuccess {String} itemListElement.result An Entity.
+@apiSuccess {String} itemListElement.result An Entity Brief Info ().
 
- @apiSuccessExample Success-Response:
+
+@apiParamExample {json}  Lookup Query
+ {
+   "names": [ "华仔","唱歌"]
+ }
+
+ @apiSuccessExample {json} Success-Response:
       HTTP/1.1 200 OK
-      {
-     	"@type": "ItemList",
- 		"numberOfItems": 1,
-     	"itemListElement": [{
-     		"@type": "EntitySearchResult",
-     		"result": {
-     			"@id": "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
-     			"@type": [
-     				"Thing",
-     				"Organization",
-     				"MusicGroup"
-     			],
-     			"name": "刘德华",
-     			"entityScore": 192802
-     		}
-     	}]
-     }
+ {
+   "@type": "ItemList",
+   "itemListElement": [{
+           "@type": "ItemList",
+           "query": "华仔",
+           "itemListElement": [{
+               "@type": "EntitySearchResult",
+               "result": {
+                   "@id": "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
+                   "@type": [
+                       "Thing",
+                       "Organization",
+                       "MusicGroup"
+                   ],
+                   "name": "刘德华",
+                   "entityScore": 192802
+               }
+           }]
+       },
+       {
+           "@type": "ItemList",
+           "query": "唱歌",
+           "itemListElement": []
+       }
+   ]
+ }
 """
 
 
@@ -139,7 +154,7 @@
 
 @apiParam {String} query  <code>必须</code>  graph query expressed in Elastic Search Query.
 
-@apiParamExample {json} Elastici Search Query
+@apiParamExample {json} Elastic Search Query
   {
 	"query": {
 		"size": 10,
@@ -195,7 +210,6 @@
       HTTP/1.1 200 OK
       {
      	"@type": "ItemList",
- 		"numberOfItems": 1,
      	"itemListElement": [{
      		"@type": "EntitySearchResult",
      		"result": {
